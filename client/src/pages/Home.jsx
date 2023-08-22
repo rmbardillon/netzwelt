@@ -16,7 +16,7 @@ const Home = () => {
 			navigate("/account/login");
 		} else {
 			axios
-				.get("http://localhost:3000/territories")
+				.get("https://login-services-netzwelt.onrender.com/territories")
 				.then((response) => {
 					setTerritories(response.data.data);
 				})
