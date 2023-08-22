@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<style>
+			ul,
+			#myUL {
+				list-style-type: none;
+			}
+			#myUL {
+				margin: 0;
+				padding: 0;
+			}
+			.caret {
+				cursor: pointer;
+				-webkit-user-select: none; /* Safari 3.1+ */
+				-moz-user-select: none; /* Firefox 2+ */
+				-ms-user-select: none; /* IE 10+ */
+				user-select: none;
+			}
+			.caret::before {
+				content: "\25B6";
+				color: black;
+				display: inline-block;
+				margin-right: 6px;
+			}
+			.caret-down::before {
+				-ms-transform: rotate(90deg); /* IE 9 */
+				-webkit-transform: rotate(90deg); /* Safari */
+				transform: rotate(90deg);
+			}
+			.nested {
+				display: none;
+			}
+			.active {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<h2>Territories</h2>
+		<p>Here are the list of territories</p>
+		<ul id="myUL">
+			<li>
+				<span class="caret">Central Luzon</span>
+				<ul class="nested">
+					<li>Bulacan</li>
+					<li>Nueva Ecija</li>
+					<li>Pampanga</li>
+					<li>Tarlac</li>
+				</ul>
+			</li>
+			<li>
+				<span class="caret">Metro Manila</span>
+				<ul class="nested">
+					<li>
+						<span class="caret">Makati</span>
+						<ul class="nested">
+							<li>Poblacion</li>
+							<li>Bel-Air</li>
+							<li>Urdaneta</li>
+						</ul>
+					</li>
+					<li>
+						<span class="caret">Marikina</span>
+						<ul class="nested">
+							<li>
+								<span class="caret">Malanday</span>
+								<ul class="nested">
+									<li>Lamuan</li>
+									<li>Sta. Teresita</li>
+									<li>Malaya</li>
+								</ul>
+							</li>
+							<li>San Roque</li>
+							<li>Concepcion</li>
+						</ul>
+					</li>
+					<li>Manila</li>
+				</ul>
+			</li>
+			<li>
+				<span class="caret">CALABARZON</span>
+				<ul class="nested">
+					<li>
+						<span class="caret">Batangas</span>
+						<ul class="nested">
+							<li>Lipa</li>
+							<li>Bauan</li>
+							<li>Sto. Tomas</li>
+						</ul>
+					</li>
+					<li>
+						<span class="caret">Cavite</span>
+						<ul class="nested">
+							<li>Silang</li>
+							<li>Bacoor</li>
+							<li>Imus</li>
+							<li>Kawit</li>
+						</ul>
+					</li>
+					<li>
+						<span class="caret">Laguna</span>
+						<ul class="nested">
+							<li>Calamba</li>
+							<li>Sta. Rosa</li>
+							<li>San Pedro</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<script>
+			var toggler = document.getElementsByClassName("caret");
+			var i;
+			for (i = 0; i < toggler.length; i++) {
+				toggler[i].addEventListener("click", function () {
+					this.parentElement
+						.querySelector(".nested")
+						.classList.toggle("active");
+					this.classList.toggle("caret-down");
+				});
+			}
+		</script>
+	</body>
+</html>
