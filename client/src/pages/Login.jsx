@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
+import { useSession } from "../components/SessionContext";
 
 const LoginPage = () => {
 	const [username, setUsername] = useState("");
@@ -12,13 +13,23 @@ const LoginPage = () => {
 		username,
 		password,
 	};
+    const { user, login } = useSession();
+    useEffect(() => {
+		if (user === null) {
+			navigate("/account/login");
+		} else {
+			navigate("/home/index");
+		}
+	}, [user]);
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
 		axios
 			.post("http://localhost:3000/login", credentials)
 			.then((response) => {
+                console.log(response.data);
 				if (response.data.message !== "Invalid username or password.") {
+                    login(response.data);
 					navigate("/home/index");
 				} else {
 					setError("Invalid username or password");

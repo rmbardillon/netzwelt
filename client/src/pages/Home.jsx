@@ -2,21 +2,29 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
+import { useSession } from "../components/SessionContext";
 
 const Home = () => {
+
 	const [territories, setTerritories] = useState([]);
 	const navigate = useNavigate();
-	useEffect(() => {
-		axios
-			.get("http://localhost:3000/territories")
-			.then((response) => {
-				setTerritories(response.data.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
+    const { user, logout } = useSession();
 
+	useEffect(() => {
+        console.log(user)
+		if (user === null) {
+			navigate("/account/login");
+		} else {
+			axios
+				.get("http://localhost:3000/territories")
+				.then((response) => {
+					setTerritories(response.data.data);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		}
+	}, []);
 	const organizeTerritoriesByRegion = () => {
 		const regions = [];
 		const territoryMap = {};
@@ -84,10 +92,6 @@ const Home = () => {
 				: [...prevExpanded, territoryId]
 		);
 	};
-
-    const logout = () => {
-        navigate("/account/login");
-    }
 
 	return (
 		<div className="home-container">
