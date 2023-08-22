@@ -24,7 +24,7 @@ const Home = () => {
 					console.log(error);
 				});
 		}
-	}, []);
+	}, [user]);
 	const organizeTerritoriesByRegion = () => {
 		const regions = [];
 		const territoryMap = {};
