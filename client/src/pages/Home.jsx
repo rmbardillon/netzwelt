@@ -8,23 +8,23 @@ const Home = () => {
 
 	const [territories, setTerritories] = useState([]);
 	const navigate = useNavigate();
-    const { user, logout } = useSession();
+    // const { user, logout } = useSession();
 
-	useEffect(() => {
-        console.log(user)
-		if (user === null) {
-			navigate("/account/login");
-		} else {
-			axios
-				.get("https://login-services-netzwelt.onrender.com/territories")
-				.then((response) => {
-					setTerritories(response.data.data);
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-		}
-	}, [user]);
+	// useEffect(() => {
+    //     console.log(user)
+	// 	if (user === null) {
+	// 		navigate("/account/login");
+	// 	} else {
+	// 		axios
+	// 			.get("https://login-services-netzwelt.onrender.com/territories")
+	// 			.then((response) => {
+	// 				setTerritories(response.data.data);
+	// 			})
+	// 			.catch((error) => {
+	// 				console.log(error);
+	// 			});
+	// 	}
+	// }, [user]);
 	const organizeTerritoriesByRegion = () => {
 		const regions = [];
 		const territoryMap = {};
@@ -95,7 +95,7 @@ const Home = () => {
 
 	return (
 		<div className="home-container">
-			<button onClick={logout}>Logout</button>
+			{/* <button onClick={logout}>Logout</button> */}
 			<h2>Territories</h2>
 			<ul id="myUL">{renderRegions()}</ul>
 		</div>
