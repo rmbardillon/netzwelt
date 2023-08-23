@@ -14,7 +14,6 @@ const App = () => {
 					<Route path="/" element={<Navigate to="/home/index" />} />
 					<Route path="/account/login" element={<Login />} />
 					<Route path="/home/index" element={<Home />} />
-					<Route path="*" element={<Navigate to="/home/index" />} />
 				</Routes>
 			</SessionProvider>
 		</Router>
