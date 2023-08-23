@@ -14,13 +14,13 @@ const LoginPage = () => {
 		password,
 	};
     const { user, login } = useSession();
-    useEffect(() => {
-		if (user === null) {
-			navigate("/account/login");
-		} else {
-			navigate("/home/index");
-		}
-	}, [user]);
+    // useEffect(() => {
+	// 	if (user === null) {
+	// 		navigate("/account/login");
+	// 	} else {
+	// 		navigate("/home/index");
+	// 	}
+	// }, [user]);
 
 	const handleLogin = async (e) => {
 		e.preventDefault();
