@@ -9,13 +9,13 @@ import { SessionProvider } from "./components/SessionContext";
 const App = () => {
 	return (
 		<Router>
-			<SessionProvider>
+			{/* <SessionProvider> */}
 				<Routes>
 					<Route path="/" element={<Navigate to="/home/index" />} />
 					<Route path="/account/login" element={<Login />} />
 					<Route path="/home/index" element={<Home />} />
 				</Routes>
-			</SessionProvider>
+			{/* </SessionProvider> */}
 		</Router>
 	);
 };

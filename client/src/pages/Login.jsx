@@ -13,7 +13,7 @@ const LoginPage = () => {
 		username,
 		password,
 	};
-    const { user, login } = useSession();
+    // const { user, login } = useSession();
     // useEffect(() => {
 	// 	if (user === null) {
 	// 		navigate("/account/login");
@@ -29,7 +29,7 @@ const LoginPage = () => {
 			.then((response) => {
                 console.log(response.data);
 				if (response.data.message !== "Invalid username or password.") {
-                    login(response.data);
+                    // login(response.data);
 					navigate("/home/index");
 				} else {
 					setError("Invalid username or password");
