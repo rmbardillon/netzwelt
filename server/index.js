@@ -81,6 +81,27 @@ app.post("/submit-form", (req, res) => {
 	});
 });
 
+
+
+const mongoose = require("mongoose");
+const routes = require("./router/routes");
+
+// Connect to MongoDB
+const connectionString =
+	"mongodb+srv://romskybardillon:JqEqCxCkxrAsnTNv@customers.whhlfly.mongodb.net/crud?retryWrites=true&w=majority";
+mongoose.connect(connectionString, {
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+});
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
+db.once("open", () => {
+	console.log("Connected to MongoDB");
+});
+
+// Import and use routes
+app.use("/api", routes);
+
 app.listen(3000, () => {
 	console.log("Server is running on port 3000");
 });
