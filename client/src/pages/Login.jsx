@@ -27,7 +27,6 @@ const LoginPage = () => {
 		axios
 			.post("https://login-services-netzwelt.onrender.com/login", credentials)
 			.then((response) => {
-                console.log(response.data);
 				if (response.data.message !== "Invalid username or password.") {
                     login(response.data);
 					navigate("/home/index");

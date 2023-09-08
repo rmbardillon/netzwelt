@@ -11,7 +11,6 @@ const Home = () => {
     const { user, logout } = useSession();
 
 	useEffect(() => {
-        console.log(user)
 		if (user === null) {
 			navigate("/account/login");
 		} else {
@@ -42,7 +41,7 @@ const Home = () => {
 			}
 		});
 
-		return regions;
+        return regions;
 	};
 
 	const renderTerritory = (territory) => (
@@ -65,10 +64,10 @@ const Home = () => {
 				<>
 					{territory.children && territory.children.length > 0 && (
 						<ul
-							className={`nested ${
+							className={` ${
 								expandedTerritories.includes(territory.id)
 									? "active"
-									: ""
+									: "nested"
 							}`}
 						>
 							{territory.children.map(renderTerritory)}
